@@ -1,3 +1,4 @@
+// Computer choices a random number, function turns it into an element for the game.
 function getComputerChoice() {
 
     let x = Math.floor(Math.random() * 3);
@@ -13,6 +14,7 @@ function getComputerChoice() {
     
 }   
 
+// Function compares the selections of both player and computer. Prints the result.
 function playRound(playerSelection, computerSelection) {
     let x = playerSelection;
     let y = computerSelection;
@@ -42,11 +44,12 @@ function playRound(playerSelection, computerSelection) {
     }
         
 }
-
+// Variables for the computer and player score count.
 let pScore, cScore;
 pScore = 0;
 cScore = 0;
 
+//Calls a 5 round game with loop. 
 function game() {
     let i = 0;
     while(i!=5) {
@@ -55,11 +58,11 @@ function game() {
         const playerSelection = choice.toLowerCase();
         const computerSelection = getComputerChoice();
     
-        console.log(computerSelection)
+        //console.log(computerSelection) for testing 
         let result = playRound(playerSelection, computerSelection);
         console.log(result)
         
-    
+        //Updates score with the results.
         if(result.includes("win")){
             ++pScore;
         }
@@ -72,6 +75,7 @@ function game() {
 
 game()
 
+//Prints the outcome of scores and the winner.
 if(pScore>cScore) {
     console.log("Your score is " + pScore + " computer's score is " + cScore + " YOU WIN!")
 }
