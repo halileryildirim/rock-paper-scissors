@@ -49,7 +49,8 @@ let pScore, cScore;
 pScore = 0;
 cScore = 0;
 
-//Calls a 5 round game with loop. 
+//Calls a 5 round game with loop.
+ 
 function game() {
     let i = 0;
     while(i!=5) {
@@ -73,15 +74,28 @@ function game() {
 
 }
 
-game()
-
 //Prints the outcome of scores and the winner.
-if(pScore>cScore) {
-    console.log("Your score is " + pScore + " computer's score is " + cScore + " YOU WIN!")
+function scoreboard () {
+    if(pScore>cScore) {
+        console.log("Your score is " + pScore + " computer's score is " + cScore + " YOU WIN!")
+    }
+    else if(cScore>pScore) {
+        console.log("Your score is " + pScore + " computer's score is " + cScore + " YOU LOSE!")
+    }
+    else {
+        console.log("Your score is " + pScore + " computer's score is " + cScore + " IT'S A TIE!")
+    }
+    
 }
-else if(cScore>pScore) {
-    console.log("Your score is " + pScore + " computer's score is " + cScore + " YOU LOSE!")
-}
-else {
-    console.log("Your score is " + pScore + " computer's score is " + cScore + " IT'S A TIE!")
-}
+
+//game()
+//scoreboard()
+
+const rockBtn = document.querySelector('.rock');
+rockBtn.addEventListener('click', () => console.log(playRound('rock', getComputerChoice()))) ;  
+
+const paperBtn = document.querySelector('.paper');
+paperBtn.addEventListener('click', () =>   console.log(playRound('paper', getComputerChoice())));    
+
+const scissorsBtn = document.querySelector('.scissors');
+scissorsBtn.addEventListener('click', () => console.log(playRound('scissors', getComputerChoice())));    
