@@ -12,7 +12,10 @@ function getComputerChoice() {
     else 
         return result = "scissors";
     
-}   
+}
+
+
+
 
 // Function compares the selections of both player and computer. Prints the result.
 function playRound(playerSelection, computerSelection) {
@@ -21,36 +24,41 @@ function playRound(playerSelection, computerSelection) {
     let result;
 
     if (x == y) {
-        return result = "It's a tie."
+        return result = "It's a tie! Computer: " + cScore + " Player: " + pScore;
     }
     else {
         if (x == "rock" && y == "paper") {
-            return result = "You lose paper beats rock!"
+            cScore++;
+            return result = "You lose paper beats rock! Computer: " + cScore + " Player: " + pScore;   
         }
         else if (x == "rock" && y == "scissors") {
-            return result = "You win rock beats scissors!"
+            pScore++;
+            return result = "You win rock beats scissors! Computer: " + cScore + " Player: " + pScore;   
         }
         else if (x == "paper" && y == "scissors") {
-            return result = "You lose scissors beats paper"
+            cScore++;
+            return result = "You lose scissors beats paper! Computer: " + cScore + " Player: " + pScore;
+            
         }
         else if (x == "paper" && y == "rock") {
-            return result = "You win paper beats rock!"
+            pScore++;
+            return result = "You win paper beats rock! Computer: " + cScore + " Player: " + pScore;
         }
         else if (x == "scissors" && y == "rock") {
-            return result = "You lose rock beats scissors"
+            cScore++;
+            return result = "You lose rock beats scissors! Computer: " + cScore + " Player: " + pScore;
         }
-        else  
-            return result = "You win scissors beats paper" 
+        else 
+            pScore++; 
+            return result = "You win scissors beats paper! Computer: " + cScore + " Player: " + pScore;
+        
+            
     }
         
 }
-// Variables for the computer and player score count.
-let pScore, cScore;
-pScore = 0;
-cScore = 0;
 
 //Calls a 5 round game with loop.
- 
+/* 
 function game() {
     let i = 0;
     while(i!=5) {
@@ -74,46 +82,57 @@ function game() {
 
 }
 
-//Prints the outcome of scores and the winner.
-function scoreboard () {
-    if(pScore>cScore) {
-        console.log("Your score is " + pScore + " computer's score is " + cScore + " YOU WIN!")
-    }
-    else if(cScore>pScore) {
-        console.log("Your score is " + pScore + " computer's score is " + cScore + " YOU LOSE!")
-    }
-    else {
-        console.log("Your score is " + pScore + " computer's score is " + cScore + " IT'S A TIE!")
-    }
-    
-}
-
+*/
 //game()
 //scoreboard()
 
+function gameOver() {
+    if(pScore==5) {
+        paragraf.textContent = "YOU WIN!  Computer:  " + cScore + " Player: " + pScore;
+        pScore = 0;
+        cScore = 0;
+    }
+    else if(cScore == 5) {;
+        paragraf.textContent = "YOU LOSE!  Computer:  " + cScore + " Player: " + pScore;
+        pScore = 0;
+        cScore = 0;
+    }
+}
+
+
+
+const container = document.querySelector(".result");
+
 const paragraf = document.createElement("p");
-paragraf.classList.add('paragraf'); 
+const paragraf2 = document.createElement("p");
+paragraf.classList.add('paragraf');
+paragraf.classList.add('paragraf2');
+container.appendChild(paragraf);
 
 const rockBtn = document.querySelector('.rock');
-rockBtn.addEventListener('click', () => playRound('rock', getComputerChoice()));
-rockBtn.onclick = () => {
-    const container = document.querySelector(".result");
-    paragraf.textContent = playRound('rock', getComputerChoice());
-    container.appendChild(paragraf);
-}
-
 const paperBtn = document.querySelector('.paper');
-paperBtn.addEventListener('click', () =>  playRound('paper', getComputerChoice()));    
-paperBtn.onclick = () => {
-    const container = document.querySelector(".result");
-    paragraf.textContent = playRound('paper', getComputerChoice());
-    container.appendChild(paragraf);
-}
-
 const scissorsBtn = document.querySelector('.scissors');
-scissorsBtn.addEventListener('click', () => playRound('scissors', getComputerChoice()));
-scissorsBtn.onclick = () => {
-    const container = document.querySelector(".result");
+
+let pScore, cScore;
+pScore = 0;
+cScore = 0;
+
+rockBtn.addEventListener('click', () => {
+    paragraf.textContent = playRound('rock', getComputerChoice())
+    gameOver();
+});
+
+
+paperBtn.addEventListener('click', () => {
+    paragraf.textContent = playRound('paper', getComputerChoice());
+    gameOver();
+});
+
+
+scissorsBtn.addEventListener('click', () => {
     paragraf.textContent = playRound('scissors', getComputerChoice());
-    container.appendChild(paragraf);
-}
+    gameOver();
+});
+
+
+
