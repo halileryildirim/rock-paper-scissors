@@ -91,11 +91,29 @@ function scoreboard () {
 //game()
 //scoreboard()
 
+const paragraf = document.createElement("p");
+paragraf.classList.add('paragraf'); 
+
 const rockBtn = document.querySelector('.rock');
-rockBtn.addEventListener('click', () => console.log(playRound('rock', getComputerChoice()))) ;  
+rockBtn.addEventListener('click', () => playRound('rock', getComputerChoice()));
+rockBtn.onclick = () => {
+    const container = document.querySelector(".result");
+    paragraf.textContent = playRound('rock', getComputerChoice());
+    container.appendChild(paragraf);
+}
 
 const paperBtn = document.querySelector('.paper');
-paperBtn.addEventListener('click', () =>   console.log(playRound('paper', getComputerChoice())));    
+paperBtn.addEventListener('click', () =>  playRound('paper', getComputerChoice()));    
+paperBtn.onclick = () => {
+    const container = document.querySelector(".result");
+    paragraf.textContent = playRound('paper', getComputerChoice());
+    container.appendChild(paragraf);
+}
 
 const scissorsBtn = document.querySelector('.scissors');
-scissorsBtn.addEventListener('click', () => console.log(playRound('scissors', getComputerChoice())));    
+scissorsBtn.addEventListener('click', () => playRound('scissors', getComputerChoice()));
+scissorsBtn.onclick = () => {
+    const container = document.querySelector(".result");
+    paragraf.textContent = playRound('scissors', getComputerChoice());
+    container.appendChild(paragraf);
+}
