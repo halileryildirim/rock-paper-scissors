@@ -13,10 +13,6 @@ function getComputerChoice() {
         return result = "scissors";
     
 }
-
-
-
-
 // Function compares the selections of both player and computer. Prints the result.
 function playRound(playerSelection, computerSelection) {
     let x = playerSelection;
@@ -56,57 +52,24 @@ function playRound(playerSelection, computerSelection) {
     }
         
 }
-
-//Calls a 5 round game with loop.
-/* 
-function game() {
-    let i = 0;
-    while(i!=5) {
-
-        let choice = prompt("Best of 5! Pick one: rock, paper, scissors")
-        const playerSelection = choice.toLowerCase();
-        const computerSelection = getComputerChoice();
-    
-        //console.log(computerSelection) for testing 
-        let result = playRound(playerSelection, computerSelection);
-        console.log(result)
-        
-        //Updates score with the results.
-        if(result.includes("win")){
-            ++pScore;
-        }
-        else if(result.includes("lose"))
-            ++cScore;
-        i++;
-    }
-
-}
-
-*/
-//game()
-//scoreboard()
-
+//function to declare winner since if-else blocks not working with DOM
 function gameOver() {
     if(pScore==5) {
-        paragraf.textContent = "YOU WIN!  Computer:  " + cScore + " Player: " + pScore;
+        paragraf.textContent = "YOU WIN!";
         pScore = 0;
         cScore = 0;
     }
     else if(cScore == 5) {;
-        paragraf.textContent = "YOU LOSE!  Computer:  " + cScore + " Player: " + pScore;
+        paragraf.textContent = "YOU LOSE!";
         pScore = 0;
         cScore = 0;
     }
 }
-
-
-
+//DOM elements and declarations
 const container = document.querySelector(".result");
 
 const paragraf = document.createElement("p");
-const paragraf2 = document.createElement("p");
 paragraf.classList.add('paragraf');
-paragraf.classList.add('paragraf2');
 container.appendChild(paragraf);
 
 const rockBtn = document.querySelector('.rock');
